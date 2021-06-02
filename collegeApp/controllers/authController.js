@@ -57,7 +57,8 @@ class authController {
                     if (verify(formData.password, data.password)){
                         let returnData = {
                             id: data.id,
-                            email: data.email
+                            email: data.email,
+                            role: data.role
                         }
                         returnData.access_token = sign(returnData)
                         response.status(200).json({success:true,data: returnData})

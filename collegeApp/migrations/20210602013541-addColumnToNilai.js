@@ -10,7 +10,7 @@ module.exports = {
      */
      await queryInterface.addColumn(
       "Nilais",
-      'dosen_id',
+      'nidn',
       {
         type: Sequelize.INTEGER,
         references: {
@@ -25,7 +25,7 @@ module.exports = {
     )
      await queryInterface.addColumn(
       "Nilais",
-      'mahasiswa_id',
+      'nim',
       {
         type: Sequelize.INTEGER,
         references: {
@@ -61,6 +61,8 @@ module.exports = {
      *
      * Example:
      */
-    await queryInterface.dropTable('Nilais');
+    await queryInterface.removeColumn('Nilais','matkul_id');
+    await queryInterface.removeColumn('Nilais','nim');
+    await queryInterface.removeColumn('Nilais','nidn');
   }
 };

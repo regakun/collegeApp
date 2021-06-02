@@ -24,7 +24,24 @@ module.exports = (sequelize, DataTypes) => {
   };
   Nilais.init({
     nilai: DataTypes.INTEGER,
-    keterangan: DataTypes.STRING
+    keterangan: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isIn: {
+          args: [['lulus', 'belum lulus']],
+          msg: 'Invalid Keterangan Value'
+        },
+        notNull: {
+          args: true,
+          msg: 'Keterangan must not be empty'
+        },
+        notEmpty: {
+          args: true,
+          msg: 'Keterangan must not be empty'
+        },
+      }
+    }
   }, {
     sequelize,
     modelName: 'Nilais',

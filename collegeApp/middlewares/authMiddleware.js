@@ -1,4 +1,4 @@
-const { Users } = require('../models')
+const { Users, Mahasiswas, Dosens } = require('../models')
 const { verifyToken } = require('../helpers/jwtHelper.js')
 
 const authenticate = (request, response, next) => {
@@ -26,5 +26,33 @@ const authenticate = (request, response, next) => {
     }
 }
 
+const authorizeNilai = (request, response, next) => {
+    let userData 
+    Users.findOne({
+        where: {
+            id: request.userData.id,
+        }
+    })
+    .then(data => {
+        if (data.role != 'dosen') {
+            next({code:403, msg: 'Unauthorized'})
+        }else{
+            userData = data
+            return Dosens.findOne({
+                where: {
+                    userId: data.id
+                }
+            })
+        }
+    })
+    .then(data => {
+        request.dosenData = data
+        next()
+    })
+    .catch(err => {
+        next(err)
+    })
+}
 
-module.exports = {authenticate}
+
+module.exports = {authenticate, authorizeNilai}

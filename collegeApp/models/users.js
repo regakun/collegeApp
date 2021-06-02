@@ -29,11 +29,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           args: true,
-          msg: 'Password must not be empty'
+          msg: 'Email must not be empty'
         },
         notEmpty: {
           args: true,
-          msg: 'Password must not be empty'
+          msg: 'Email must not be empty'
         },
         isEmail: {
           args: true,
@@ -69,11 +69,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         notNull: {
           args: true,
-          msg: 'Password must not be empty'
+          msg: 'Role must not be empty'
         },
         notEmpty: {
           args: true,
-          msg: 'Password must not be empty'
+          msg: 'Role must not be empty'
         },
       }
     }

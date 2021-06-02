@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Mata_kuliah.init({
-    name: DataTypes.STRING
+    nama: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Mata_kuliah',
