@@ -1,0 +1,1 @@
+SELECT nilai.*, mata_kuliah.nama as matkul, dosen.nama as dosen, mahasiswa.* FROM nilai join mata_kuliah ON mata_kuliah.id = nilai.id_matkul join dosen on nilai.nidn = dosen.nidn join mahasiswa on mahasiswa.nim = nilai.nim where nilai.nilai >= 75 ORDER BY nilai.nilai DESC 
